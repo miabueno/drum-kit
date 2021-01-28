@@ -18,6 +18,7 @@ document.addEventListener("keydown", function(){
 function playSound(keyLetter) {
 	soundFile = findSound(keyLetter);
 	makeSound(soundFile);
+	buttonAnimation(keyLetter);
 }
 
 // returns sound file corresponding to key
@@ -56,3 +57,16 @@ function makeSound(soundFile) {
 	var audio = new Audio(soundFile);
 	audio.play();
 }
+
+// given key, add pressed class styling to button
+function buttonAnimation(keyLetter) {
+	var activeButton = document.querySelector("." + keyLetter);
+	activeButton.classList.add("pressed");
+
+	// wait 100 milliseconds
+	setTimeout(function() {
+    	activeButton.classList.remove("pressed");
+  	}, 100);
+}
+
+
